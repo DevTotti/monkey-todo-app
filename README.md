@@ -48,7 +48,9 @@ python manage.py test
 
 
 #Usage
-To run the server, by default the server runs on 5000 but you can change it to anything. You can do this by reading the comment in ```app.py``` line 89
+To run the server, by default the server runs on port 8000
+
+The docker image also runs on port 8000
 
 When all is set, run the server using
 
