@@ -17,7 +17,7 @@ class TestViews(TestSetup):
         self.client.post(
             self.register_url, self.user_data, format='json'
         )
-        
+
         res = self.client.post(
             self.login_url, self.user_data, format='json'
         )
