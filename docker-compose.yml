@@ -1,26 +1,23 @@
-version: "3"
+
+# The docker-compose.yml file describes the services that make your app. In this example those services are a web server and database.
+
+version: "3.3"
+   
 services:
-  app:
-    build:
-      context: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./app:/app
-    command: >
-      sh -c "python manage.py wait_for_db &&
-             python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
-    environment:
-      - DB_HOST=db
-      - DB_NAME=app
-      - DB_USER=postgres
-      - DB_PASS=supersecretpassword
-    depends_on:
-      - db
-  db:
-    image: postgres:10-alpine
-    environment:
-      - POSTGRES_DB=app
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=supersecretpassword
+    django:
+        build: .
+        container_name: django
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/home/app/webapp
+        ports:
+            - "8000:8000"
+        depends_on:
+            - pgdb
+    pgdb:
+        image: postgres:12
+        container_name: pgdb
+        environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
