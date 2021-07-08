@@ -74,6 +74,13 @@ https://www.getpostman.com/collections/550d77b6921b71f4c6ea
 
 ```
 
+## Docker Image 
+The Docker Container is available, you can install by running the command
+
+```
+docker pull devtotti/todoapp-v0.1
+```
+
 I hope you found it easy
 
 Paul
